@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for proper Git operations
+          token: ${{ secrets.GITHUB_TOKEN }}  # Ensure the token is used for checkout
 
       - name: Configure Git
         run: |
