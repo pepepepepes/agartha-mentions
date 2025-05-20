@@ -1,2 +1,23 @@
-{"tweet_id":"N/A","author_id":"bleed1799","text":".@AgarthaTerminal yo","reply_text":"N/A","timestamp":"2025-05-20T05:45:44.000Z"}
-{"tweet_id":"N/A","author_id":"TinoWillMiss","text":".@AgarthaTerminal andjdn","reply_text":"N/A","timestamp":"2025-05-20T07:32:10.000Z"}
+[
+  {
+    "tweet_id": "N/A",
+    "author_id": "TinoWillMiss",
+    "text": ".@AgarthaTerminal yo wassup fit",
+    "reply_text": "N/A",
+    "timestamp": "2025-05-20T11:08:38.000Z"
+  },
+  {
+    "tweet_id": "N/A",
+    "author_id": "TinoWillMiss",
+    "text": ".@AgarthaTerminal andjdn",
+    "reply_text": "N/A",
+    "timestamp": "2025-05-20T07:32:10.000Z"
+  },
+  {
+    "tweet_id": "N/A",
+    "author_id": "bleed1799",
+    "text": ".@AgarthaTerminal yo",
+    "reply_text": "N/A",
+    "timestamp": "2025-05-20T05:45:44.000Z"
+  }
+]
