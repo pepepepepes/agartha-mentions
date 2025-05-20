@@ -106,13 +106,33 @@ def scrape_mentions():
                     mentions.append(mention_data)
             except Exception as e:
                 logger.error(f"Error parsing tweet: {e}")
+
         if mentions:
-            with open(MENTIONS_FILE, "a") as f:
-                for mention in mentions:
-                    json.dump(mention, f)
-                    f.write("\n")
-            logger.info(f"Saved {len(mentions)} mentions to {MENTIONS_FILE}")
-            update_git()
+            # Load existing mentions to deduplicate
+            existing_mentions = set()
+            if os.path.exists(MENTIONS_FILE):
+                with open(MENTIONS_FILE, "r") as f:
+                    for line in f:
+                        if line.strip():
+                            existing_mentions.add(line.strip())
+
+            # Add new mentions, skipping duplicates
+            new_mentions = []
+            for mention in mentions:
+                mention_str = json.dumps(mention)
+                if mention_str not in existing_mentions:
+                    new_mentions.append(mention)
+                    existing_mentions.add(mention_str)
+
+            if new_mentions:
+                with open(MENTIONS_FILE, "a") as f:
+                    for mention in new_mentions:
+                        json.dump(mention, f)
+                        f.write("\n")
+                logger.info(f"Saved {len(new_mentions)} new mentions to {MENTIONS_FILE}")
+                update_git()
+            else:
+                logger.info("No new mentions to save after deduplication")
         else:
             logger.info("No new mentions found")
     except Exception as e:
